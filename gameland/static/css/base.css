@@ -2,14 +2,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 /* subtitulos nav */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
+:root{
+    --color-negro:#000000;
+    --color-azul: #14213d;
+    --color-amarillo:#fca311;
+    --color-gris:#e5e5e5;
+    --color-blanco:#ffffff;
+    --color-red:#d90429;
+
+    --texto1:'Rubik', sans-serif;
+    --subtitulo:'Libre Franklin', sans-serif;
+    --titulo:'Fugaz One', cursive;
+
+    --BottomOffset: 0px;
+    --LineHeight: 2px;
+    --LineColor: var(--color-negro);
+}
+/* titulos */
+.titulo1{
+    font-family: var(--titulo);
+    color: var(--color-negro);
+}
+.titulo1-blanco{
+    font-family: var(--titulo);
+    color: var(--color-blanco);
+}
+.titulo2{
+    font-family: var(--titulo);
+    color: var(--color-amarillo);
+}
+.titulo3{
+    font-family:var(--text1) ;
+    font-weight: 300;
+}
+
+
+
 .title-nav{
     font-family: 'Fugaz One', cursive;
 }
-:root {
-    --BottomOffset: 0px;
-    --LineHeight: 2px;
-    --LineColor: black;
-  }
 .nav-link{
     font-family: 'Rubik', sans-serif;
     font-weight: 400;

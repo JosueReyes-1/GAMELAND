@@ -2,6 +2,163 @@
 
 {% load static %}
 
-{% block content %} 
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}'>
+</head>
+<!-- banner promos -->
+<div class="banner-promos  d-flex">
+    <ul class="d-flex justify-content-around  w-100 m-auto">
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-truck-fast fs-3"></i>
+            <p>Envios Express</p>
+        </li>
+        <li class="text-center list-unstyled ">
+            <i class="fa-solid fa-star-sharpfs-3"></i>
+            <p>+40000 reseñas de Productos</p>
+        </li>
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-tag fs-3"></i>
+           <p>Productos Exclusivos</p>
+        </li>
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-lock fs-3"></i>
+            <p>Compras 100% seguras</p>
+        </li>
+    </ul>
+</div>
+
+<!-- banner principal -->
+
+<div class="banner-principal">
+    <div class="card bg-dark text-white h-100 d-flex">
+        <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
+        <div class="card-img-overlay text-center h-100">
+            <div class="row g-0 m-auto h-100 container-info">
+                <div class="col-md-6 m-auto container-img-slider"></div>
+                <div class="col-md-6 m-auto info2">
+                    <div class="card-body text-banner">
+                        <h5 class="card-title titulo3 text-break">Hasta un 60% de Desc.</h5>
+                        <h5 class="card-title titulo1-blanco display-3">ULTIMAS <br> REBAJAS</h5>
+                        <a href="" class="btn-banner titulo1">Ver Mas</a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- slider destacados -->
+<div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
+    <div class="container">
+        <h2 class="my-4 text-center titulo3 fs-3">Destacados</h2>
+    </div>
+    <div class="site-section bg-left-half  ">
+        <div class=" owl-2-style w-100"  >
+            <div class="owl-carousel owl-2 ">
+                <div class="media-29101 px-5 d-flex justify-content-center">
+                    <button class="btn text-start btn-block" onclick="this.blur();">
+                            <div class="container-img">
+                                <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
+                                <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest" id="img2">
+                            </div>
+                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text titulo3 ">$200.00</p>
+                    </button>
+                </div>
+                <div class="media-29101 px-5  d-flex justify-content-center">
+                    <button class="btn text-start">
+                        <a a href="#"><img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest"></a>
+                        <p class="card-text texto fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text texto">$200.00</p>
+                    </button>
+                </div>
+                <div class="media-29101 px-5 d-flex justify-content-center">
+                    <button class="btn text-start">
+                        <a a href="#"><img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest"></a>
+                        <p class="card-text texto fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text texto">$200.00</p>
+                    </button>
+                </div>  
+                <div class="media-29101 px-5 d-flex justify-content-center">
+                    <button class="btn text-start">
+                        <a a href="#"><img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest"></a>
+                        <p class="card-text texto fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text texto">$200.00</p>
+                    </button>
+                </div>
+                <div class="media-29101 px-5 d-flex justify-content-center">
+                    <button class="btn text-start">
+                        <a a href="#"><img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest"></a>
+                        <p class="card-text texto fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text texto">$200.00</p>
+                    </button>
+                </div>
+                <div class="media-29101 px-5 d-flex justify-content-center">
+                    <button class="btn text-start">
+                        <a a href="#"><img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-dest"></a>
+                        <p class="card-text texto fs-5">Termo marvel Edicion especial</p>
+                        <p class="card-text texto">$200.00</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="secciones mt-5">
+    <div class="card-group mx-5 mb-3">
+        <div class="card-seccion card mx-3 border-0" style="flex-grow: 1.5; ">
+            <div class="card bg-dark text-white h-100 border-0" >
+                <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+        </div>
+        <div class="card-seccion card  border-0">
+            <div class="card bg-dark text-white h-100 border-0">
+                <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="card-group mx-5 mt-3">
+        <div class="card-seccion card mx-3 border-0">
+            <div class="card bg-dark text-white h-100 border-0" >
+                <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+        </div>
+        <div class="card-seccion card  border-0"  style="flex-grow: 1; ">
+            <div class="card bg-dark text-white h-100 border-0">
+                <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
+<script src='{% static "js/popper.min.js"%}'></script>
+<script src='{% static "js/bootstrap.min.js"%}'></script>
+<script src='{% static "js/owl.carousel.min.js" %}'></script>
+<script src='{% static "js/index.js" %}'></script>
 
 {% endblock %}
