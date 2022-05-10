@@ -50,34 +50,25 @@
 </div>
 
 
-    
-
-
-
 
 <!-- slider destacados -->
 <div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
     <div class="container">
-        <h2 class="my-4 text-center titulo3 fs-3">Destacados</h2>
+        <h2 class="my-4 text-center titulo3 fs-3">Lo Mas Nuevo</h2>
     </div>
     <div class="site-section bg-left-half  ">
         <div class=" owl-2-style w-100"  >
             <div class="owl-carousel owl-2 ">
-                {% for producto in productos %}
-                    <div class="media-29101 px-5 d-flex justify-content-center">
-                        <button class="btn text-start btn-block" onclick="this.blur();">
-                                <div class="container-img">
-                                    <img src="{{producto.imagenes.last.imagen.url}}" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
-                                    <img src="{{producto.imagenes.first.imagen.url}}" alt="Image" class="img-fluid img-slider-dest" id="img2">
-                                </div>
-                            <p class="card-text titulo3 fs-5">{{producto.nombre}}</p>
-                            <p class="card-text titulo3 ">${{producto.precio}}</p>
-                            <p>
-                                {% for u in producto.categoria.all %}
-                                    <p>{{u.nombre_categ}}</p>
-                                {% endfor %}    
-                            </p>
-                        </button>
+                {% for nuevo in productos %}
+                    <div class="media-29101  d-flex justify-content-center">
+                        <span href="">
+                            <div class="container-img">
+                                <img src="{{nuevo.imagenes.last.imagen.url}}" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
+                                <img src="{{nuevo.imagenes.first.imagen.url}}" alt="Image" class="img-fluid img-slider-dest" id="img2">
+                            </div>
+                            <p class="card-text titulo3 m-0 fs-4">{{nuevo.nombre}}</p>
+                            <p class="card-text titulo1 fs-5">${{nuevo.precio}}</p>
+                        </span>
                     </div>
                 {% endfor %}
             </div>
@@ -148,75 +139,66 @@
 
 <div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
     <div class="container">
-        <h2 class="my-4 text-center titulo3 fs-3">Lo Mas Nuevo</h2>
+        <h2 class="my-4 text-center titulo3 fs-3">Descuentos</h2>
     </div>
     <div class="site-section bg-left-half  ">
         <div class="container owl-2-style w-100"  >
             <div class="owl-carousel owl-2 ">
-                <div class="media-29101 d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
+                {% for descuento in productos %}
+                    <div class="media-29101 d-flex justify-content-center">
+                        <span class="text-start">
                             <div class="container-img">
                                 <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
                                 <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
                             </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>
-                <div class="media-29101   d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
-                        <div class="container-img">
-                            <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
-                            <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
-                        </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>
-                <div class="media-29101  d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
-                        <div class="container-img">
-                            <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
-                            <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
-                        </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>  
-                <div class="media-29101 d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
-                        <div class="container-img">
-                            <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
-                            <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
-                        </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>
-                <div class="media-29101 d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
-                        <div class="container-img">
-                            <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
-                            <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
-                        </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>
-                <div class="media-29101  d-flex justify-content-center">
-                    <button class="btn text-start btn-block" onclick="this.blur();">
-                        <div class="container-img">
-                            <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
-                            <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
-                        </div>
-                        <p class="card-text titulo3 fs-5">Termo marvel Edicion especial</p>
-                        <p class="card-text titulo3 ">$200.00</p>
-                    </button>
-                </div>
+                            <p class="card-text titulo3 m-0 fs-5">Termo marvel Edicion especial</p>
+                            <p class="card-text titulo1 ">$200.00</p>
+                        </span>
+                    </div>
+                {% endfor %} 
             </div>
         </div>
     </div>
 </div>
+
+<div class="">
+    <h5 class="text-center mb-4">Recomedaciones</h5>
+    <div class="card-group m-auto justify-content-around" style="height: 60vh; width: 90%;">
+        <div class="card h-100 border-0">
+            <img src="static/img/reloj.webp" class="card-img-top" height="80%" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">Relojes</h5>
+                <p class="card-text">lleva un mejor accesorio</p>
+                <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
+                    Ver mas
+                </button>
+            </div>
+        </div>
+        <div class="card h-100 border-0">
+            <img src="static/img/playera.webp" class="card-img-top" height="80%" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">Playeras</h5>
+                <p class="card-text">Viste con estilo</p>
+                <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
+                    Ver mas
+                </button>
+            </div>
+        </div>
+        <div class="card h-100 border-0">
+            <img src="static/img/mochila.webp" class="card-img-top" height="80%" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">Mochilas</h5>
+                <p class="card-text">Completa tu outfit</p>
+                <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
+                    Ver mas
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
 
 <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
 <script src='{% static "js/popper.min.js"%}'></script>

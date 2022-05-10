@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from indexapp.models import Marca_Producto,Categoria_Producto,Producto, ImagenProducto
+from indexapp.models import Marca_Producto,Categoria_Producto,Producto, ImagenProducto, Estado
 # Register your models here.
 
 class ImagenProductoAdmin(admin.TabularInline):
@@ -19,4 +19,5 @@ class ProductoAdmin(admin.ModelAdmin):
 
 admin.site.register(Marca_Producto)
 admin.site.register(Categoria_Producto)
+admin.site.register(Estado)
 admin.site.register(Producto, ProductoAdmin)
