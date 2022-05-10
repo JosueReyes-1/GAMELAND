@@ -11,7 +11,7 @@ class ProductoAdmin(admin.ModelAdmin):
     list_display=["nombre","precio","marca"]
     list_editable=["precio"]
     search_fields=["nombre"]
-    list_per_page=5
+    list_per_page=10
     inlines=[
         ImagenProductoAdmin
     ]
