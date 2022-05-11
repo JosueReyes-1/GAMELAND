@@ -7,43 +7,24 @@
     <link rel="stylesheet" href="{% static "css/index.css" %}">
     <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}'>
 </head>
-<!-- banner promos -->
-<div class="banner-promos  d-flex">
-    <ul class="d-flex justify-content-around  w-100 m-auto">
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-truck-fast fs-3"></i>
-            <p>Envios Express</p>
-        </li>
-        <li class="text-center list-unstyled ">
-            <i class="fa-solid fa-star-sharpfs-3"></i>
-            <p>+40000 reseñas de Productos</p>
-        </li>
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-tag fs-3"></i>
-           <p>Productos Exclusivos</p>
-        </li>
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-lock fs-3"></i>
-            <p>Compras 100% seguras</p>
-        </li>
-    </ul>
-</div>
+
 
 <!-- banner principal -->
 
-<div class="banner-principal">
-    <div class="card bg-dark text-white h-100 d-flex">
-        <img src="static/img/banner-marvel.png" class="card-img h-100"  alt="...">
-        <div class="card-img-overlay text-center h-100">
+<div class="banner-principal ">
+    <div class="card  text-white h-100 d-flex">
+        <img src="static/img/banner-spider.jpg" class="card-img h-100 "  alt="...">
+        <div class="card-img-overlay text-center h-100 ">
             <div class="row g-0 m-auto h-100 container-info">
-                <div class="col-md-6 m-auto container-img-slider"></div>
                 <div class="col-md-6 m-auto info2">
                     <div class="card-body text-banner">
                         <h5 class="card-title titulo3 text-break">Hasta un 60% de Desc.</h5>
                         <h5 class="card-title titulo1-blanco display-3">ULTIMAS <br> REBAJAS</h5>
                         <button href="" class="btn-banner border-0 titulo1" onclick="this.blur();">Ver Mas</button>
                     </div>
-                </div>  
+                </div> 
+                <div class="col-md-6 m-auto container-img-slider"></div>
+                 
             </div>
         </div>
     </div>
@@ -54,14 +35,14 @@
 <!-- slider destacados -->
 <div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
     <div class="container">
-        <h2 class="my-4 text-center titulo3 fs-3">Lo Mas Nuevo</h2>
+        <h2 class="my-4 text-center titulo3 fs-2">Lo Mas Nuevo</h2>
     </div>
     <div class="site-section bg-left-half  ">
-        <div class=" owl-2-style w-100"  >
+        <div class="owl-2-style w-100"  >
             <div class="owl-carousel owl-2 ">
                 {% for nuevo in productos %}
                     <div class="media-29101  d-flex justify-content-center">
-                        <span href="">
+                        <span href="" class="container-product">
                             <div class="container-img">
                                 <img src="{{nuevo.imagenes.last.imagen.url}}" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
                                 <img src="{{nuevo.imagenes.first.imagen.url}}" alt="Image" class="img-fluid img-slider-dest" id="img2">
@@ -137,16 +118,16 @@
 </div>
 
 
-<div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
+<div class="content mt-5 container-desc">
     <div class="container">
-        <h2 class="my-4 text-center titulo3 fs-3">Descuentos</h2>
+        <h2 class="my-4 text-center titulo3 fs-2">Descuentos</h2>
     </div>
     <div class="site-section bg-left-half  ">
-        <div class="container owl-2-style w-100"  >
-            <div class="owl-carousel owl-2 ">
+        <div class="container owl-3-style w-100"  >
+            <div class="owl-carousel owl-3 ">
                 {% for descuento in productos %}
                     <div class="media-29101 d-flex justify-content-center">
-                        <span class="text-start">
+                        <span class="container-product">
                             <div class="container-img">
                                 <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
                                 <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
@@ -161,34 +142,34 @@
     </div>
 </div>
 
-<div class="">
-    <h5 class="text-center mb-4">Recomedaciones</h5>
-    <div class="card-group m-auto justify-content-around" style="height: 60vh; width: 90%;">
-        <div class="card h-100 border-0">
-            <img src="static/img/reloj.webp" class="card-img-top" height="80%" alt="...">
+<div class="mt-5">
+    <h5 class="text-center mb-4 titulo3 fs-2">Recomedaciones</h5>
+    <div class="cards-recom card-group m-auto justify-content-around">
+        <div class="card h-100 border-0 m-3">
+            <img src="static/img/reloj.webp" class="card-img-top img-recom"  alt="...">
             <div class="card-body text-center">
-                <h5 class="card-title">Relojes</h5>
-                <p class="card-text">lleva un mejor accesorio</p>
+                <h5 class="card-title titulo1 fs-4">Relojes</h5>
+                <p class="card-text fs-5 titulo3">lleva un mejor accesorio</p>
                 <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
                     Ver mas
                 </button>
             </div>
         </div>
-        <div class="card h-100 border-0">
-            <img src="static/img/playera.webp" class="card-img-top" height="80%" alt="...">
+        <div class="card h-100 border-0 m-3">
+            <img src="static/img/playera.webp" class="card-img-top img-recom"  alt="...">
             <div class="card-body text-center">
-                <h5 class="card-title">Playeras</h5>
-                <p class="card-text">Viste con estilo</p>
+                <h5 class="card-title titulo1 fs-4 ">Playeras</h5>
+                <p class="card-text fs-5 titulo3">Viste con estilo</p>
                 <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
                     Ver mas
                 </button>
             </div>
         </div>
-        <div class="card h-100 border-0">
-            <img src="static/img/mochila.webp" class="card-img-top" height="80%" alt="...">
+        <div class="card h-100 border-0 m-3">
+            <img src="static/img/mochila.webp" class="card-img-top img-recom" alt="...">
             <div class="card-body text-center">
-                <h5 class="card-title">Mochilas</h5>
-                <p class="card-text">Completa tu outfit</p>
+                <h5 class="card-title titulo1 fs-4">Mochilas</h5>
+                <p class="card-text fs-5 titulo3">Completa tu outfit</p>
                 <button class="btn btn-box-banner titulo3 fs-5 px-3" onclick="this.blur();">
                     Ver mas
                 </button>
@@ -198,6 +179,27 @@
     </div>
 </div>
 
+<!-- banner promos -->
+<div class="banner-promos mt-5 d-flex">
+    <ul class="d-flex justify-content-around  w-100 m-auto">
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-truck-fast fs-3"></i>
+            <p>Envios Express</p>
+        </li>
+        <li class="text-center list-unstyled ">
+            <i class="fa-solid fa-star-sharpfs-3"></i>
+            <p>+40000 reseñas de Productos</p>
+        </li>
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-tag fs-3"></i>
+           <p>Productos Exclusivos</p>
+        </li>
+        <li class="text-center list-unstyled">
+            <i class="fa-solid fa-lock fs-3"></i>
+            <p>Compras 100% seguras</p>
+        </li>
+    </ul>
+</div>
 
 
 <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
