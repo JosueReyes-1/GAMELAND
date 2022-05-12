@@ -40,16 +40,16 @@
     <div class="site-section bg-left-half  ">
         <div class="owl-2-style w-100"  >
             <div class="owl-carousel owl-2 ">
-                {% for nuevo in productos %}
+                {% for nuevo in nuevos %}
                     <div class="media-29101  d-flex justify-content-center">
-                        <span href="" class="container-product">
+                        <a href="/productos/{{nuevo.slug}}" class="container-product">
                             <div class="container-img">
                                 <img src="{{nuevo.imagenes.last.imagen.url}}" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
                                 <img src="{{nuevo.imagenes.first.imagen.url}}" alt="Image" class="img-fluid img-slider-dest" id="img2">
                             </div>
                             <p class="card-text titulo3 m-0 fs-4">{{nuevo.nombre}}</p>
                             <p class="card-text titulo1 fs-5">${{nuevo.precio}}</p>
-                        </span>
+                        </a>
                     </div>
                 {% endfor %}
             </div>
@@ -125,15 +125,15 @@
     <div class="site-section bg-left-half  ">
         <div class="container owl-3-style w-100"  >
             <div class="owl-carousel owl-3 ">
-                {% for descuento in productos %}
+                {% for descuento in desc %}
                     <div class="media-29101 d-flex justify-content-center">
                         <span class="container-product">
                             <div class="container-img">
                                 <img src="static/img/termo2.webp" alt="Image" class="img-fluid img-slider-nuevo img2" id="img1">
                                 <img src="static/img/termo.webp" alt="Image" class="img-fluid img-slider-nuevo" id="img2">
                             </div>
-                            <p class="card-text titulo3 m-0 fs-5">Termo marvel Edicion especial</p>
-                            <p class="card-text titulo1 ">$200.00</p>
+                            <p class="card-text titulo3 m-0 fs-5">{{descuento.nombre}}/p>
+                            <p class="card-text titulo1 ">${descuento.precio}}</p>
                         </span>
                     </div>
                 {% endfor %} 

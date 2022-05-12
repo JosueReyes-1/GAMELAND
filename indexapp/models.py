@@ -1,7 +1,8 @@
 
 from turtle import ondrag
 from django.db import models
-
+from django.db.models.signals import pre_save
+from gameland.utils import unique_slug_generator
 # Create your models here.
 
 class Marca_Producto(models.Model):
@@ -32,6 +33,14 @@ class Producto(models.Model):
     marca=models.ForeignKey(Marca_Producto,on_delete=models.CASCADE)
     categoria=models.ManyToManyField(Categoria_Producto)
     estado=models.ForeignKey(Estado, on_delete=models.CASCADE)
+    slug=models.SlugField(max_length=200, null=True, blank=True)
+
+# slug
+def slug_generator(sender,instance, *args,**kwargs):
+    if not instance.slug:
+        instance.slug=unique_slug_generator(instance)
+
+pre_save.connect(slug_generator, sender=Producto)
 
 class ImagenProducto(models.Model):
     imagen=models.ImageField(upload_to='productos',null=True)
