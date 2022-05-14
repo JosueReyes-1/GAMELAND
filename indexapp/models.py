@@ -44,5 +44,6 @@ pre_save.connect(slug_generator, sender=Producto)
 
 class ImagenProducto(models.Model):
     imagen=models.ImageField(upload_to='productos',null=True)
-    Producto=models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="imagenes")
+    producto=models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="imagenes")
 
+    

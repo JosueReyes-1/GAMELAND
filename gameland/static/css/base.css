@@ -35,6 +35,12 @@
 .titulo3{
     font-family:var(--text1) ;
     font-weight: 300;
+    color: var(--color-negro);
+}
+.titulo3-blanco{
+    font-family:var(--text1) ;
+    font-weight: 300;
+    color: var(--color-blanco);
 }
 
 

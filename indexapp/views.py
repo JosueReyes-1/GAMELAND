@@ -5,14 +5,10 @@ from indexapp.models import Producto,ImagenProducto,Estado
 
 def index(request):
     # consulta de productos nuevos
-    nuevo=Estado.objects.get(estado='nuevo')
-    productos_nuevos=Producto.objects.filter(estado=nuevo)
-
+    productos_nuevos=Producto.objects.filter(estado__estado='nuevo')
     imagenesP=ImagenProducto.objects.all()
-
     # consulta de productos en descuentos
-    desc=Estado.objects.get(estado='descuento')
-    productos_desc=Producto.objects.filter(estado=desc)
+    productos_desc=Producto.objects.filter(estado__estado='descuento')
 
     context={
         "nuevos": productos_nuevos,
@@ -21,15 +17,20 @@ def index(request):
     }
     return render(request,"indexapp/index.html", context)
 
+
+
 def detalles(request, slug_text):
-    producto=Producto.objects.filter(slug=slug_text)
-    if producto.exists():
-        producto=producto.first()
+    productos=Producto.objects.filter(slug=slug_text)
+    imagenesP=ImagenProducto.objects.filter(producto__slug=slug_text) 
+
+    if productos.exists():
+        productos=productos.first()
     else:
         return HttpResponse("<h5>Pagina No encontrada</h5>")
     
     context={
-        'producto':producto
+        'producto':productos,
+        'imagenes':imagenesP,
     }
     
     return render(request,'indexapp/detalles.html',context)
