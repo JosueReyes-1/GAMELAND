@@ -2,7 +2,8 @@ from multiprocessing import context
 from queue import Empty
 from urllib import request
 from django.shortcuts import render,HttpResponse
-from indexapp.models import Producto,ImagenProducto,Estado,Categoria_Producto
+from indexapp.models import Producto,ImagenProducto
+from django.core.paginator import Paginator,EmptyPage
 # Create your views here.
 
 def index(request):
@@ -38,18 +39,27 @@ def detalles(request, slug_text):
     return render(request,'indexapp/detalles.html',context)
 
 def categorias(request, slug_text):
-    categorias=Producto.objects.filter(categoria__slug=slug_text)
-    imagenesP=ImagenProducto.objects.filter(producto__categoria=1)
+    productos=Producto.objects.filter(categoria__slug=slug_text)
+    imagenesP=ImagenProducto.objects.all()
+
+    p=Paginator(productos,10)
+    page_num=request.GET.get('page',1)
+
+    try:
+        page=p.page(page_num)
+    except EmptyPage:
+        page=p.page(1)
 
     
-    if categorias.exists():
-        categorias=categorias.all()
+    if productos.exists():
+        productos=productos.all()
     else:
         return HttpResponse("<h5>Pagina No encontrada</h5>")
     
     context={
-        'categoria':categorias,
+        'productos':page,
         'imagenes':imagenesP,
+
     }
     
     return render(request,'indexapp/lista_productos.html',context)
