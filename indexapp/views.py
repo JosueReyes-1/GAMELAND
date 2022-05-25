@@ -1,6 +1,8 @@
+from multiprocessing import context
 from queue import Empty
+from urllib import request
 from django.shortcuts import render,HttpResponse
-from indexapp.models import Producto,ImagenProducto,Estado
+from indexapp.models import Producto,ImagenProducto,Estado,Categoria_Producto
 # Create your views here.
 
 def index(request):
@@ -34,3 +36,20 @@ def detalles(request, slug_text):
     }
     
     return render(request,'indexapp/detalles.html',context)
+
+def categorias(request, slug_text):
+    categorias=Producto.objects.filter(categoria__slug=slug_text)
+    imagenesP=ImagenProducto.objects.filter(producto__categoria=1)
+
+    
+    if categorias.exists():
+        categorias=categorias.all()
+    else:
+        return HttpResponse("<h5>Pagina No encontrada</h5>")
+    
+    context={
+        'categoria':categorias,
+        'imagenes':imagenesP,
+    }
+    
+    return render(request,'indexapp/lista_productos.html',context)

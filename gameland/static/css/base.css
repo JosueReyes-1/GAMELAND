@@ -47,6 +47,7 @@
 .navbar{
     position: fixed;
     z-index: 3;
+    top:0;
     background-color: var(--color-blanco);
 }
 .title-nav{

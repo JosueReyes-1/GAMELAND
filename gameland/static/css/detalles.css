@@ -102,3 +102,12 @@
     width: 150px;
     border-radius: 0px !important
 }
+
+.container-desc{
+    width: 100%; 
+    min-height: 50vh;
+}
+.img-slider-nuevo{
+    height: 40vh;
+
+}

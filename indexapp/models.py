@@ -12,10 +12,13 @@ class Marca_Producto(models.Model):
         return self.nombre_marca
 
 class Categoria_Producto(models.Model):
-    nombre_categ=models.CharField(max_length=30)
+    nombre=models.CharField(max_length=30)
+    imagen=models.ImageField(null=True)
+    slug=models.SlugField(max_length=200, null=True, blank=True)
+
 
     def __str__(self):
-        return self.nombre_categ
+        return self.nombre
 
 class Estado(models.Model):
     estado=models.CharField(max_length=30)
@@ -41,6 +44,7 @@ def slug_generator(sender,instance, *args,**kwargs):
         instance.slug=unique_slug_generator(instance)
 
 pre_save.connect(slug_generator, sender=Producto)
+pre_save.connect(slug_generator, sender=Categoria_Producto)
 
 class ImagenProducto(models.Model):
     imagen=models.ImageField(upload_to='productos',null=True)
