@@ -77,3 +77,12 @@
     width: calc(100% + var(--LineHeight));
     left: calc(var(--LineHeight) / -2);
 }
+
+/* footer */
+
+footer{
+    background-color: var(--color-azul);
+}
+.footer-nav{
+    background-color: var(--color-negro);
+}

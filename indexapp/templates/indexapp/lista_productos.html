@@ -8,29 +8,31 @@
 <section class="lista_productos mt-5">
     <div class="container px-1 px-lg-2 ">
         <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
-            {% for producto in productos %}
-                <div class="col mb-5 ">
-                    <a href="/productos/{{producto.slug}}" class="text-decoration-none">
-                        <div class="card h-100 border-0">
-                            <img class="card-img-top" height="400px" src="{{producto.imagenes.last.imagen.url}}" alt="..." />
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <h5 class=" titulo3">{{producto.nombre}}</h5>
-                                    <p class="titulo1">${{producto.precio}}</p>
+            {% if productos %}
+                {% for producto in productos %}
+                    <div class="col mb-5 ">
+                        <a href="/productos/{{producto.slug}}" class="text-decoration-none">
+                            <div class="card h-100 border-0">
+                                <img class="card-img-top" height="400px" src="{{producto.imagenes.last.imagen.url}}" alt="..." />
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class=" titulo3 fs-5">{{producto.nombre}}</h5>
+                                        <p class="titulo1">${{producto.precio}}</p>
+                                    </div>
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Comprar</a></div>
                                 </div>
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Comprar</a></div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>holaa</h1>
+            {% endif %}
         </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 {% if productos.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{productos.previous_page_number}}">Previous</a>
-                    </li>
+                    <li class="page-item "><a class="page-link" href="?page={{productos.previous_page_number}}">Previous</a></li>
                 {% endif %}
 
                 {% for i in productos.paginator.page_range %}
@@ -40,9 +42,7 @@
                 
                 
                 {% if productos.has_next%}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{productos.next_page_number}}">Next</a>
-                    </li>
+                    <li class="page-item"><a class="page-link" href="?page={{productos.next_page_number}}">Next</a></li>
                 {% endif %}
             </ul>
         </nav>

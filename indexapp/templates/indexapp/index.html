@@ -11,7 +11,7 @@
 
 <!-- banner principal -->
 
-<div class="banner-principal ">
+<div class="banner-principal mt-5">
     <div class="card  text-white h-100 d-flex">
         <img src="static/img/banner-spider.jpg" class="card-img h-100 "  alt="...">
         <div class="card-img-overlay text-center h-100 ">
@@ -35,7 +35,7 @@
 <!-- slider destacados -->
 <div class="content mt-5 " style="width: 100%; min-height: 60vh;" >
     <div class="container">
-        <h2 class="my-4 text-center titulo3 fs-2">Lo Mas Nuevo</h2>
+        <h2 class="my-4 text-center titulo3 fs-2 ">Lo Mas Nuevo</h2>
     </div>
     <div class="site-section bg-left-half  ">
         <div class="owl-2-style w-100"  >
@@ -48,8 +48,8 @@
                                 <img src="{{nuevo.imagenes.first.imagen.url}}" alt="Image" class="img-fluid img-slider-dest" id="img2">
                             </div>
                             <div class="text-center p-3">
-                                <p class="card-text titulo3 m-0 fs-4">{{nuevo.nombre}}</p>
-                                <p class="card-text titulo1 fs-5">${{nuevo.precio}}</p>
+                                <p class="card-text titulo3 m-0 fs-5">{{nuevo.nombre}}</p>
+                                <p class="card-text titulo1 ">${{nuevo.precio}}</p>
                             </div>
                         </a>
                     </div>
@@ -150,7 +150,7 @@
 <div class="mt-5">
     <h5 class="text-center mb-4 titulo3 fs-2">Recomedaciones</h5>
     <div class="cards-recom card-group m-auto justify-content-around">
-        <a class="card h-100 border-0 m-3">
+        <a class="card h-100 border-0 m-3 text-decoration-none">
             <img src="static/img/reloj.webp" class="card-img-top img-recom"  alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title titulo1 fs-4">Relojes</h5>
@@ -160,7 +160,7 @@
                 </button>
             </div>
         </a>
-        <a class="card h-100 border-0 m-3">
+        <a class="card h-100 border-0 m-3 text-decoration-none">
             <img src="static/img/playera.webp" class="card-img-top img-recom"  alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title titulo1 fs-4 ">Playeras</h5>
@@ -170,7 +170,7 @@
                 </button>
             </div>
         </a>
-        <a class="card h-100 border-0 m-3">
+        <a class="card h-100 border-0 m-3 text-decoration-none">
             <img src="static/img/mochila.webp" class="card-img-top img-recom" alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title titulo1 fs-4">Mochilas</h5>
@@ -184,27 +184,7 @@
     </div>
 </div>
 
-<!-- banner promos -->
-<div class="banner-promos mt-5 d-flex">
-    <ul class="d-flex justify-content-around  w-100 m-auto">
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-truck-fast fs-3"></i>
-            <p>Envios Express</p>
-        </li>
-        <li class="text-center list-unstyled ">
-            <i class="fa-solid fa-star-sharpfs-3"></i>
-            <p>+40000 reseñas de Productos</p>
-        </li>
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-tag fs-3"></i>
-           <p>Productos Exclusivos</p>
-        </li>
-        <li class="text-center list-unstyled">
-            <i class="fa-solid fa-lock fs-3"></i>
-            <p>Compras 100% seguras</p>
-        </li>
-    </ul>
-</div>
+
 
 
 <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>

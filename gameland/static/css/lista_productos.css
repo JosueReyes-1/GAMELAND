@@ -2,3 +2,12 @@
     padding-top: 7%;
 }
 
+/* barra de paginacion */
+.page-link{
+    color:var(--color-negro);
+}
+
+.page-link:hover{
+    background-color: var(--color-amarillo);
+    color: var(--color-blanco);
+}

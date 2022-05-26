@@ -49,13 +49,6 @@ def categorias(request, slug_text):
         page=p.page(page_num)
     except EmptyPage:
         page=p.page(1)
-
-    
-    if productos.exists():
-        productos=productos.all()
-    else:
-        return HttpResponse("<h5>Pagina No encontrada</h5>")
-    
     context={
         'productos':page,
         'imagenes':imagenesP,
