@@ -11,3 +11,30 @@
     background-color: var(--color-amarillo);
     color: var(--color-blanco);
 }
+
+
+.container-img{
+    position: relative;
+}
+.img2{
+    opacity: 0;
+    position:absolute;
+    transition: .7s all;
+}
+.container-product:hover .img2{
+    opacity: 1;
+}
+
+
+@media (max-width: 1000px){
+    .imagen{
+        height: 300px;
+        
+    }
+}
+@media (max-width: 400px){
+    .imagen{
+        height: 200px;
+        
+    }
+}

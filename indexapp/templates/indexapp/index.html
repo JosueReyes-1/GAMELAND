@@ -2,11 +2,16 @@
 
 {% load static %}
 
-{% block content %}
-<head>
+<!-- head -->
+{% block head %}
     <link rel="stylesheet" href="{% static "css/index.css" %}">
     <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}'>
-</head>
+{% endblock %}
+
+<!-- contenido -->
+{% block content %}
+
+    
 
 
 <!-- banner principal -->
@@ -16,14 +21,15 @@
         <img src="static/img/banner-spider.jpg" class="card-img h-100 "  alt="...">
         <div class="card-img-overlay text-center h-100 ">
             <div class="row g-0 m-auto h-100 container-info">
-                <div class="col-md-6 m-auto info2">
-                    <div class="card-body text-banner">
-                        <h5 class="card-title titulo3-blanco text-break">Hasta un 60% de Desc.</h5>
-                        <h5 class="card-title titulo1-blanco display-3">ULTIMAS <br> REBAJAS</h5>
-                        <button href="" class="btn-banner border-0 titulo1" onclick="this.blur();">Ver Mas</button>
+                <div class="col-md-6 m-auto info2 text-banner">
+                    <div class="card-body">
+                        <h5 class="card-title titulo1 text-break">Hasta un 60% de Desc.</h5>
+                        <h5 class="card-title titulo1 display-3">ULTIMAS <br> REBAJAS</h5>
+                        
+                        <a href="" class="btn-banner titulo1-blanco fs-5 ">COMPRAR</a>
                     </div>
                 </div> 
-                <div class="col-md-6 m-auto container-img-slider"></div>
+                <div class="col-md-6 m-auto container-img-slider "></div>
                  
             </div>
         </div>
@@ -38,12 +44,11 @@
         <div class="container">
             <h2 class="my-4 text-center titulo3 fs-2 ">Lo Mas Nuevo</h2>
         </div>
-        <div class="site-section bg-left-half  ">
-            
+        <div class="site-section">
             <div class="owl-2-style w-100"  >
-                <div class="owl-carousel owl-2 ">
+                <div class="owl-carousel owl-2">
                     {% for nuevo in nuevos %}
-                        <div class="media-29101  d-flex justify-content-center">
+                        <div class=" d-flex justify-content-center">
                             <a href="/productos/{{nuevo.slug}}" class="container-product text-decoration-none">
                                 <div class="container-img">
                                     <img src="{{nuevo.imagenes.last.imagen.url}}" alt="Image" class="img-fluid img-slider-dest img2" id="img1">
@@ -67,8 +72,8 @@
 
 <!-- secciones -->
 <div class="secciones mt-5">
-    <div class="card-group mx-5 mb-3">
-        <a href="/categorias/celular" class="card-seccion card mx-3 border-0" style="flex-grow: 1.5; ">
+    <div class="card-group  mb-3">
+        <a href="/categorias/celular" class="card-seccion card mx-2 border-0" style="flex-grow: 1.5; ">
             <div class="card bg-dark text-white h-100 border-0" >
                 <img src="static/img/box-banner2.jpg" class="card-img h-100"  alt="...">
                 <div class="card-img-overlay d-flex  align-items-end">
@@ -81,7 +86,7 @@
                 </div>
             </div>
         </a>
-        <a class="card-seccion card  border-0">
+        <a class="card-seccion card mx-2  border-0">
             <div class="card bg-dark text-white h-100 border-0">
                 <img src="static/img/box-banner3.webp" class="card-img h-100"  alt="...">
                 <div class="card-img-overlay d-flex  align-items-end">
@@ -95,8 +100,8 @@
               </div>
         </a>
     </div>
-    <div class="card-group mx-5 mt-3">
-        <a class="card-seccion card mx-3 border-0">
+    <div class="card-group  mt-3">
+        <a class="card-seccion card  mx-2 border-0">
             <div class="card bg-dark text-white h-100 border-0" >
                 <img src="static/img/box-banner1.jpg" class="card-img h-100"  alt="...">
                 <div class="card-img-overlay d-flex  align-items-end">
@@ -109,7 +114,7 @@
                 </div>
               </div>
         </a>
-        <a class="card-seccion card  border-0"  style="flex-grow: 1; ">
+        <a class="card-seccion card mx-2  border-0"  style="flex-grow: 1; ">
             <div class="card bg-dark text-white h-100 border-0">
                 <img src="static/img/box-banner4.jpg" class="card-img h-100"  alt="...">
                 <div class="card-img-overlay d-flex  align-items-end">
@@ -131,8 +136,7 @@
         <div class="container">
             <h2 class="my-4 text-center titulo3 fs-2">Descuentos</h2>
         </div>
-        <div class="site-section bg-left-half  ">
-            
+        <div class="site-section bg-left-half  ">      
             <div class="container owl-3-style w-100"  >
                 <div class="owl-carousel owl-3 ">
                     {% for descuento in desc %}
@@ -146,7 +150,6 @@
                                     <p class="card-text titulo3 m-0 fs-5">{{descuento.nombre}}</p>
                                     <p class="card-text titulo1 ">${{descuento.precio}}</p>
                                 </div>
-                                
                             </a>
                         </div>
                     {% endfor %} 
@@ -200,10 +203,14 @@
 
 
 
-<script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
-<script src='{% static "js/popper.min.js"%}'></script>
-<script src='{% static "js/bootstrap.min.js"%}'></script>
-<script src='{% static "js/owl.carousel.min.js" %}'></script>
-<script src='{% static "js/index.js" %}'></script>
 
+
+{% endblock %}
+
+{% block scripts %}
+    <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
+    <script src='{% static "js/popper.min.js"%}'></script>
+    <script src='{% static "js/bootstrap.min.js"%}'></script>
+    <script src='{% static "js/owl.carousel.min.js" %}'></script>
+    <script src='{% static "js/index.js" %}'></script>
 {% endblock %}

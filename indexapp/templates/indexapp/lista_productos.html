@@ -2,51 +2,66 @@
 
 {% load static %}
 
+<!-- head -->
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/lista_productos.css' %}">
+{% endblock %}
+
+<!-- contenido -->
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/lista_productos.css' %}">
 
-<section class="lista_productos mt-5">
-    <div class="container px-1 px-lg-2 ">
-        <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
+<section class="lista_productos mx-1 mt-5">
+        <div class="container px-1 px-lg-2 ">
             {% if productos %}
-                {% for producto in productos %}
-                    <div class="col mb-5 ">
-                        <a href="/productos/{{producto.slug}}" class="text-decoration-none">
-                            <div class="card h-100 border-0">
-                                <img class="card-img-top" height="400px" src="{{producto.imagenes.last.imagen.url}}" alt="..." />
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <h5 class=" titulo3 fs-5">{{producto.nombre}}</h5>
-                                        <p class="titulo1">${{producto.precio}}</p>
+                <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
+                    
+                        {% for producto in productos %}
+                            <div class="col mb-5 container-product">
+                                <a href="/productos/{{producto.slug}}" class="text-decoration-none">
+                                    <div class="card h-100 border-0">
+                                        <div class="container-img">
+                                            <img src="{{producto.imagenes.last.imagen.url}}" height="400px" alt="Image" class="card-img-top imagen img2">
+                                            <img src="{{producto.imagenes.first.imagen.url}}" height="400px" alt="Image" class="card-img-top imagen">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <h5 class=" titulo3 fs-5">{{producto.nombre}}</h5>
+                                                <p class="titulo1">${{producto.precio}}</p>
+                                            </div>
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Comprar</a></div>
+                                        </div>
                                     </div>
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Comprar</a></div>
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <h1>holaa</h1>
-            {% endif %}
+                        {% endfor %}
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% if productos.has_previous %}
+                            <li class="page-item "><a class="page-link" href="?page={{productos.previous_page_number}}">Previous</a></li>
+                        {% endif %}
+
+                        {% for i in productos.paginator.page_range %}
+                            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+                    
+                        
+                        {% if productos.has_next%}
+                            <li class="page-item"><a class="page-link" href="?page={{productos.next_page_number}}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                {% if productos.has_previous %}
-                    <li class="page-item "><a class="page-link" href="?page={{productos.previous_page_number}}">Previous</a></li>
-                {% endif %}
-
-                {% for i in productos.paginator.page_range %}
-                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                {% endfor %}
-               
-                
-                
-                {% if productos.has_next%}
-                    <li class="page-item"><a class="page-link" href="?page={{productos.next_page_number}}">Next</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
-
+        {% else %}
+            <div class="error m-auto my-1">
+                <img src="{% static 'img/warning.png'%}" height="200px"  alt="">
+                <h5 class="display-1 titulo2">UPS...</h5>
+                <p class="titulo1 fs-1">HA OCURRIDO UN ERROR INSEPERADO, VULEVA MAS TARDE</p>
+            </div>
+        {% endif %}
 </section>
+{% endblock %}
+
+<!-- scripts -->
+{% block scrips %}
 {% endblock %}

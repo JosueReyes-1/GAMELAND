@@ -1,45 +1,12 @@
 {% extends "indexapp/base.html" %}
 
 {% load static %}
+<!-- head -->
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/detalles.css" %}">
+{% endblock %}
 
 {% block content %}
-<!-- <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            {% for imagen in imagenes %}
-                            <img src="{{imagen.imagen.url}}" class="d-block img-fluid" alt="...">
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h1 class="display-5 fw-bolder">nombre</h1>
-                <div class="fs-5 mb-5"><br>
-                    <span class="fw-bold">
-                        <h3>precio</h3>
-                    </span>
-                </div>
-                <p class="lead">descripcion</p>
-            </div>
-        </div>
-    </div>
-    </section> -->
-<link rel="stylesheet" href="{% static "css/detalles.css" %}">
 
 <div class="detalle-producto">
     <div class="container" >
@@ -113,5 +80,10 @@
 </div>
 
 
-<script src="{% static 'js/detalles.js' %}"></script>
+
+{% endblock %}
+
+<!-- scripts -->
+{% block scripts %}
+    <script src="{% static 'js/detalles.js' %}"></script>
 {% endblock %}

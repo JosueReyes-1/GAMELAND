@@ -59,3 +59,4 @@ def categorias(request, slug_text):
     }
     
     return render(request,'indexapp/lista_productos.html',context)
+

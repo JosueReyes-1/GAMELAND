@@ -7,9 +7,9 @@
     --color-negro:#000000;
     --color-azul: #14213d;
     --color-amarillo:#fca311;
-    --color-gris:#e5e5e5;
+    --color-gris:#818181;
     --color-blanco:#ffffff;
-    --color-red:#d90429;
+    --color-red:#a31621;
 
     --texto1:'Rubik', sans-serif;
     --subtitulo:'Libre Franklin', sans-serif;
@@ -44,15 +44,7 @@
 }
 
 
-.navbar{
-    position: fixed;
-    z-index: 2;
-    top:0;
-    background-color: var(--color-blanco);
-}
-.title-nav{
-    font-family: 'Fugaz One', cursive;
-}
+/* nav */
 .nav-link{
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
@@ -71,13 +63,28 @@
     bottom: var(--BottomOffset);
 	border-radius:var(--LineHeight);
     left: 50%;
-    transition: 0.6s cubic-bezier(0.25, 0.1, 0, 2.02);
+    transition: 0.6s cubic-bezier(0.25, 0.1, 0, 1);
 }
 .nav-link:hover::before{
     width: calc(100% + var(--LineHeight));
     left: calc(var(--LineHeight) / -2);
 }
+.navbar-toggler{
+    border: 0;
+}
+.icon{
+    color: var(--color-amarillo);
+    font-size: 22px;
+}
+.mask-custom {
+  background-color: var(--color-blanco);
+  border-bottom: 1px solid var(--color-gris);
+}
 
+.navbar-brand {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+}
 /* footer */
 
 footer{
