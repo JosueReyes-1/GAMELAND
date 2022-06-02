@@ -111,3 +111,19 @@
     height: 40vh;
 
 }
+
+/* btn-tallas */
+
+.btn-tallas{
+    border: 1px solid #81818160;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border-radius: 0px;
+}
+.btn-tallas:hover{
+    border: 1px solid var(--color-negro) ;
+}
+.btn-tallas:focus{
+    border-color: var(--color-negro);
+    box-shadow: none;
+}

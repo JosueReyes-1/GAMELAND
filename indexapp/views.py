@@ -1,6 +1,6 @@
 
 from django.shortcuts import render,HttpResponse
-from indexapp.models import Producto,ImagenProducto
+from indexapp.models import Producto,ImagenProducto, Producto_Size
 from django.core.paginator import Paginator,EmptyPage
 
 
@@ -23,6 +23,9 @@ def index(request):
 def detalles(request, slug_text):
     productos=Producto.objects.filter(slug=slug_text)
     imagenesP=ImagenProducto.objects.filter(producto__slug=slug_text) 
+    size=Producto_Size.objects.filter(producto__slug=slug_text)
+
+    print(size)
 
     if productos.exists() and imagenesP.exists():
         productos=productos.first()
@@ -31,6 +34,7 @@ def detalles(request, slug_text):
         # redirigir a pestaña de error
     
     context={
+        'tamaños': size,
         'producto':productos,
         'imagenes':imagenesP,
     }

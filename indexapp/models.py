@@ -1,5 +1,7 @@
 
-from turtle import ondrag
+from pyexpat import model
+from tkinter.tix import Tree
+from turtle import back, ondrag
 from django.db import models
 from django.db.models.signals import pre_save
 from gameland.utils import unique_slug_generator
@@ -37,6 +39,21 @@ class Producto(models.Model):
     categoria=models.ManyToManyField(Categoria_Producto)
     estado=models.ForeignKey(Estado, on_delete=models.CASCADE)
     slug=models.SlugField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+class Size(models.Model):
+    talla=models.CharField(max_length=30)
+    detalles=models.CharField(max_length=30, null=True, blank=True)
+    def __str__(self):
+        return self.talla
+
+
+class Producto_Size(models.Model):
+    producto=models.ForeignKey(Producto,on_delete=models.CASCADE)
+    talla=models.ManyToManyField(Size)
+
 
 # slug
 def slug_generator(sender,instance, *args,**kwargs):

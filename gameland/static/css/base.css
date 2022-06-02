@@ -93,3 +93,26 @@ footer{
 .footer-nav{
     background-color: var(--color-negro);
 }
+
+
+/* modal */
+.modal-xl{
+    border: 0;
+    margin: auto;
+
+}
+.modal-header{
+    height: 10vh;
+}
+
+.search{
+    width: 50%;
+}
+.barra-search{
+    height: 50px;
+}
+
+.btn-modal:focus{
+    border-color: var(--color-negro);
+    box-shadow: none;
+}
