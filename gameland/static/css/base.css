@@ -96,22 +96,27 @@ footer{
 
 
 /* modal */
-.modal-xl{
-    border: 0;
-    margin: auto;
+.modal-fullscreen{
+    height: auto;
+}
 
+.input-group-text{
+    background: none;
 }
 .modal-header{
-    height: 10vh;
+    height: 20vh;
+    justify-content: center;
 }
-
 .search{
     width: 50%;
 }
-.barra-search{
-    height: 50px;
+.modal-body{
+    padding: 0;
 }
 
+.barra-search:focus{
+    border-color: var(--color-amarillo);
+}
 .btn-modal:focus{
     border-color: var(--color-negro);
     box-shadow: none;

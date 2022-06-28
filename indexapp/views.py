@@ -1,5 +1,6 @@
 
 from django.shortcuts import render,HttpResponse
+from django.http import JsonResponse
 from indexapp.models import Producto,ImagenProducto, Producto_Size
 from django.core.paginator import Paginator,EmptyPage
 
@@ -12,6 +13,8 @@ def index(request):
     # consulta de productos en descuentos
     productos_desc=Producto.objects.filter(estado__estado='descuento')
     
+    
+
     context={
         "nuevos": productos_nuevos,
         "desc": productos_desc,
