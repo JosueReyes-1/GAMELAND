@@ -1,7 +1,4 @@
 
-from pyexpat import model
-from tkinter.tix import Tree
-from turtle import back, ondrag
 from django.db import models
 from django.db.models.signals import pre_save
 from gameland.utils import unique_slug_generator
