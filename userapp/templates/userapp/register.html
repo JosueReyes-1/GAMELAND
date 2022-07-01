@@ -3,11 +3,81 @@
 {% load static %}
 <!-- head -->
 {% block head %}
- <link rel="stylesheet" href="{% static "css/register.css" %}">
+<link rel="stylesheet" href="{% static "css/register.css" %}">
 {% endblock %}
 
 {% block content %}
-    
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card border-0 shadow rounded-3 my-5">
+				<div class="card-body p-4 p-sm-5">
+					<h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+					<form method="POST">
+						{% csrf_token %}
+						<div class="mb-3">
+							{{form.username}}
+							<label for="floatingInput">Nombre de Usuario</label>
+						</div>
+						<div class="mb-3">
+							{{form.email}}
+							<label for="floatingInput">Correo Electronico</label>
+						</div>
+						<div class=" mb-3">
+							{{form.password1}}
+							<label for="floatingPassword">Contraseña</label>
+						</div>
+						<div class="mb-3">
+							{{form.password2}}
+							<label for="floatingPassword">Confirmar Contraseña</label>
+						</div>
+
+						<div class="form-check mb-3">
+							<input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+							<label class="form-check-label" for="rememberPasswordCheck">
+								Remember password
+							</label>
+						</div>
+						<div class="d-grid">
+							<button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
+								in</button>
+						</div>
+
+						{{form.errors}}
+						<hr class="my-4">
+						<div class="d-grid mb-2">
+							<button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
+								<i class="fab fa-google me-2"></i> Sign in with Google
+							</button>
+						</div>
+						<div class="d-grid">
+							<button class="btn btn-facebook btn-login text-uppercase fw-bold" type="submit">
+								<i class="fab fa-facebook-f me-2"></i> Sign in with Facebook
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- <form method="POST" style="margin-top:100px ;">
+    {% csrf_token %}
+
+    {{form.username}}
+
+    {{form.email}}
+
+    {{form.password1}}
+
+    {{form.password2}}
+
+    <input type="submit">
+</form> -->
 {% endblock %}
 
 <!-- scripts -->

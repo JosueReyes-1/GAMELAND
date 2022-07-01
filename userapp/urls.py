@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('login',LoginView.as_view(template_name="userapp/login.html"), name='login'),
-    path('register',views.register, name='register')
+    path('register/',views.register, name='register'),
+    path('login/',views.loginPage,name='login'),
+    path('logout/',views.logoutUser,name='logout'),
 ]  
