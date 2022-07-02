@@ -37,6 +37,7 @@
                         {% for message in messages %}
                             <p>{{message}}</p>
                         {% endfor%}
+						<span>¿Aun no tienes cuenta? <a href="{% url 'register' %}">Registrate</a></span>
 						<hr class="my-4">
 						<div class="d-grid mb-2">
 							<button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
