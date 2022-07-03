@@ -21,10 +21,14 @@ def register(request):
         if request.method=='POST':
             form=CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
-            user =form.cleaned_data.get('username')
-            messages.success(request,'Account was created for ' + user)
-            return redirect('login')
+            email=form.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                messages.success(request,'El Email ya esta registrado, prueba otro')
+            else:
+                form.save()
+                user =form.cleaned_data.get('username')
+                messages.success(request,'Account was created for ' + user)
+                return redirect('login')
     
 
     context={

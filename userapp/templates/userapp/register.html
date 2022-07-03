@@ -42,7 +42,9 @@
 							<button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
 								in</button>
 						</div>
-
+						{% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor%}
 						{{form.errors}}
 						<span>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia Sesion</a></span>
 						<hr class="my-4">

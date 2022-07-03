@@ -92,6 +92,9 @@ DATABASES = {
         # 'DATABASE_PORT': '5432',
     }
 }
+AUTHENTICATION_BACKENDS = [
+    'userapp.backends.EmailAuthBackend',
+]
 
 
 # Password validation
