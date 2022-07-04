@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from syslog import LOG_INFO
 
-from django.urls import reverse_lazy
+from django.urls import path, reverse_lazy
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +32,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTHENTICATION_BACKENDS = [
+    'userapp.backends.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +50,23 @@ INSTALLED_APPS = [
     'indexapp',
     'userapp',
     "colorfield",
+
+    #allauth
+    
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
+     'crispy_forms',
 ]
+
+SITE_ID = 1
+
 X_FRAME_OPTIONS = "SAMEORIGIN"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +83,7 @@ ROOT_URLCONF = 'gameland.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'userapp/templates/userapp')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',   
             ],
         },
     },
@@ -92,9 +113,7 @@ DATABASES = {
         # 'DATABASE_PORT': '5432',
     }
 }
-AUTHENTICATION_BACKENDS = [
-    'userapp.backends.EmailAuthBackend',
-]
+
 
 
 # Password validation
@@ -129,6 +148,7 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL=('/')
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -144,3 +164,11 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS=3
+ACCOUNT_LOGOUT_ON_GET=True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,0 +1,27 @@
+.form-control{
+    height: 50px;
+}
+.requiredField{
+    margin-top: 20px;
+}
+.form-check{
+    margin-top: 20px;
+}
+.btn-login{
+    width: 50%;
+    background-color: var(--color-negro);
+    border: 0;
+}
+
+.facebook{
+    background-color:#3b5998;
+}
+.facebook:hover{
+    background-color:#436dc9;
+}
+.google{
+    background-color: rgb(219, 68 ,55);
+}
+.google:hover{
+    background-color: rgb(250, 33, 14);
+}

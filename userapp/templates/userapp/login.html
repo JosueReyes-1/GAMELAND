@@ -1,9 +1,10 @@
 {% extends "indexapp/base.html" %}
 
+<!-- {% load socialaccount %} -->
 {% load static %}
 <!-- head -->
 {% block head %}
-<link rel="stylesheet" href="{% static " css/login.css" %}">
+`<link rel="stylesheet" href="{% static " css/login.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -16,7 +17,7 @@
 					<form method="POST">
 						{% csrf_token %}
 						<div class="form-floating mb-3">
-							<input type="text" class="form-control" id="floatingInput" placeholder="" name="email">
+							<input type="text" class="form-control" id="floatingInput" value="" placeholder="" name="email">
 							<label for="floatingInput">Nombre de Usuario</label>
 						</div>
 						<div class="form-floating mb-3">
@@ -40,9 +41,7 @@
 						<span>¿Aun no tienes cuenta? <a href="{% url 'register' %}">Registrate</a></span>
 						<hr class="my-4">
 						<div class="d-grid mb-2">
-							<button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
-								<i class="fab fa-google me-2"></i> Sign in with Google
-							</button>
+							<a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook OAuth2</a>
 						</div>
 						<div class="d-grid">
 							<button class="btn btn-facebook btn-login text-uppercase fw-bold" type="submit">
