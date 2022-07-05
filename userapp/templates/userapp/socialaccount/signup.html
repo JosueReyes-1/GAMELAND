@@ -1,22 +1,27 @@
 {% extends "socialaccount/base.html" %}
 
 {% load i18n %}
+{% load crispy_forms_tags %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-    <h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+{% block account %}
+    <h1 class="titulo3 text-center">{% trans "Sign Up" %}</h1>
+
+	<p class="tiutlo3 mt-3">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+	{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+	{% csrf_token %}
+	{{ form | crispy }}
+	{% if redirect_field_value %}
+		<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+	{% endif %}
+	<div class="d-flex flex-column mt-3">
+		<button class="btn btn-primary  mt-3 m-auto btn-login text-uppercase fw-bold titulo2-blanco" type="submit">Sign up <i class="bi bi-arrow-right"></i></button>
+	</div>
+
+	<a href="/accounts/login">Volver atras</a>
 </form>
 
 {% endblock %}

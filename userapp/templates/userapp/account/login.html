@@ -2,6 +2,9 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load socialaccount %}
+
+
 {% load crispy_forms_tags %}
 
 
@@ -11,18 +14,16 @@
 		{% csrf_token %}
 		
 		{{ form | crispy}}
-
 		{% if redirect_field_value %}
 			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 		{% endif %}
 		<div class="d-flex flex-column mt-3">
 			<div class="d-flex justify-content-between">
 				<a class="button secondaryAction mb-2 titulo3 " href="{% url 'account_reset_password' %}">Forgot Password?</a>
-				<a class="titulo3" href="{{ signup_url }}">Sign up</a>
+				<a class="titulo3 " href="{{ signup_url }}">Sign up</a>
 			</div>
 			<button class="btn btn-primary m-auto mt-3 btn-login text-uppercase fw-bold titulo2-blanco" type="submit">Sign in </button>
 		</div>
-		
 		
 		
 		<hr class="my-4">
@@ -30,8 +31,8 @@
 
 		{% if socialaccount_providers %}
 			<div class="d-flex flex-column ">
-				<button class="btn btn-primary text-uppercase fw-bold facebook border-0" type="submit"><i class="bi bi-facebook"></i> Login with Facebook</button>
-				<button class="btn btn-primary  mt-2 text-uppercase fw-bold google border-0"  type="submit"></i><i class="bi bi-google"></i> Sign in with Google+</button>
+				<a href="{% provider_login_url "facebook" method="oauth2" %}" class="btn btn-primary text-uppercase fw-bold facebook border-0" type="submit"><i class="bi bi-facebook"></i> Login with Facebook</a>
+				<a href="/accounts/google/login" id="google_login" class="btn btn-primary mt-2 text-uppercase fw-bold google border-0"  type="submit"></i><i class="bi bi-google"></i> Sign in with Google+</a>
 			</div>
 
 			{% include "socialaccount/snippets/login_extra.html" %}
@@ -40,6 +41,7 @@
 			<p class="titulo3"> {% blocktrans %}If you have not created an account yet, then please
 			<a class="class="titulo3" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 		{% endif %}
+		
 	</form>
 
 {% endblock %}

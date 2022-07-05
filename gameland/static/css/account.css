@@ -9,9 +9,10 @@
 }
 .btn-login{
     width: 50%;
-    background-color: var(--color-negro);
+    background-color: var(--color-amarillo);
     border: 0;
 }
+
 
 .facebook{
     background-color:#3b5998;
