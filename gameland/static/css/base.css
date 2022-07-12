@@ -52,7 +52,8 @@
 	z-index: 1;
 }
 
-.nav-link::before{
+
+.hover::before{
     position: absolute;
     content: '';
     display: block;
@@ -65,7 +66,7 @@
     left: 50%;
     transition: 0.6s cubic-bezier(0.25, 0.1, 0, 1);
 }
-.nav-link:hover::before{
+.hover:hover::before{
     width: calc(100% + var(--LineHeight));
     left: calc(var(--LineHeight) / -2);
 }
@@ -84,6 +85,26 @@
 .navbar-brand {
   font-size: 1.75rem;
   letter-spacing: 3px;
+}
+
+.btn-sesion{
+    border-radius: 5px;
+    background-color: var(--color-amarillo);
+}
+.btn-sesion:hover{
+    background-color: #fcbc57;
+}
+
+.btn-perfil{
+    background-color: var(--color-amarillo);
+    border: 0;
+    padding: 8px; 
+    border-radius: 5px;
+    color: var(--color-blanco);
+    font-weight: bold;
+}
+.btn-perfil:hover{
+    background-color: #fcbc57;
 }
 /* footer */
 

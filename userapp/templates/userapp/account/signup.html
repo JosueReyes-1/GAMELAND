@@ -2,7 +2,7 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
-
+{% load socialaccount %}
 
 
 {% block account %}
@@ -18,7 +18,13 @@
 	  <div class="d-flex flex-column mt-3">
 		<button class="btn btn-primary  mt-3 m-auto btn-login text-uppercase fw-bold titulo2-blanco" type="submit">Sign up <i class="bi bi-arrow-right"></i></button>
 	  </div>
-	  
+	
+	<hr class="my-4">
+	<div class="d-flex flex-column ">
+		<a href="{% provider_login_url "facebook" method="oauth2" %}" class="btn btn-primary text-uppercase fw-bold facebook border-0" type="submit"><i class="bi bi-facebook"></i> Login with Facebook</a>
+		<a href="/accounts/google/login" id="google_login" class="btn btn-primary mt-2 text-uppercase fw-bold google border-0"  type="submit"></i><i class="bi bi-google"></i> Sign in with Google+</a>
+	</div>
+
 	  
 	</form>
 

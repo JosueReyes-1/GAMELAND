@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'indexapp',
     'userapp',
+    'shopping_cart',
     "colorfield",
 
     #allauth
