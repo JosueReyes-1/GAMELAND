@@ -50,8 +50,14 @@
                             <h5 class="fs-5 titulo3">Cantidad</h5>
 
                         </div>
-                        <div class="buttons d-flex flex-row mt-3 gap-3"> <button class="btn btn-outline-dark">Buy
-                            Now</button> <button class="btn btn-dark" >Add to Basket</button> 
+                        <div class="buttons d-flex flex-row mt-3 gap-3"> 
+                            <form action="carrito/" method="POST">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-dark">Buy Now</button> 
+                                <input type="hidden" name="product_pk" id="" value="{{producto.pk}}">
+                                <input type="hidden" name="user_pk" id="" value="{{user.pk}}">
+                                <button  class="btn btn-dark" type="submit" >Add to Basket</button> 
+                            </form>
                         </div>
                         <div class="mt-3 accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">

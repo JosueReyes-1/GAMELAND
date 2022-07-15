@@ -42,6 +42,7 @@
 					
 					<ul class="navbar-nav d-flex flex-row">
 						<li class="nav-item me-3 me-lg-0">
+							<a href="">{{cart}}</a>
 							{% if user.is_active %}
 								<div class="dropdown nav-link" >
 									<button class="btn-perfil  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,7 +52,6 @@
 										<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 											<li><a class="dropdown-item" href="#">Ver Pedidos</a></li>
 											<li><a class="dropdown-item" href="{% url 'account_logout' %}">Cerrar Sesion</a></li>
-											
 										</ul>	
 								</div> 
 							{% else %}
@@ -67,7 +67,9 @@
 						
 						<li class="nav-item me-3 me-lg-0">
 							<a class="nav-link hover" href="#!">
-								<span>Carrito</span>
+								<form action="carrito/"></form>
+								<a href="{% url 'carrito' %}">Carrito</a>
+								
 								<i class="bi bi-cart2 icon"></i>
 							</a>
 						</li>
