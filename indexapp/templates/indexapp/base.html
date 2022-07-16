@@ -65,16 +65,10 @@
 						</li>
 						
 						<li class="nav-item me-3 me-lg-0">
-							<a class="nav-link hover" href="#!">
-								<form action="listaproductos/" method="POST">
-									{% csrf_token %}
-									<input type="hidden" name="user_pk" value="{{user.pk}}">
-									<a type="submit" href="{% url 'lista'%}">Carrito</a>
-								</form>
-								
-								
+							<span class="nav-link hover" href="#!">
+								<a href="{% url 'lista'%}">Carrito</a>
 								<i class="bi bi-cart2 icon"></i>
-							</a>
+							</span>
 						</li>
 						<li class="nav-item me-3 me-lg-0">
 							

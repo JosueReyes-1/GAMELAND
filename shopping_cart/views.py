@@ -1,15 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from indexapp.models import Producto
-
+from django.contrib.auth.models import User
 from shopping_cart.models import Lista_Productos
 
 
 # Create your views here.
 def view_products(request):
-    user_pk=request.POST.get('user_pk')
-    productos=Lista_Productos.objects.filter(user_id=user_pk)
-
+    user=request.user.id
+    productos=Lista_Productos.objects.filter(user_id=user)
+    countP=productos.count()
+    print(user)
     total=0
     for precio in productos:
         total=total+precio.producto.precio
@@ -18,6 +19,7 @@ def view_products(request):
     context={
         "listaproductos":productos,
         "totalpagar":total,
+        "countP":countP,
     }
     return render(request,'shopping_cart/carrito_compras.html',context)
 
