@@ -42,7 +42,6 @@
 					
 					<ul class="navbar-nav d-flex flex-row">
 						<li class="nav-item me-3 me-lg-0">
-							<a href="">{{cart}}</a>
 							{% if user.is_active %}
 								<div class="dropdown nav-link" >
 									<button class="btn-perfil  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,8 +66,12 @@
 						
 						<li class="nav-item me-3 me-lg-0">
 							<a class="nav-link hover" href="#!">
-								<form action="carrito/"></form>
-								<a href="{% url 'carrito' %}">Carrito</a>
+								<form action="listaproductos/" method="POST">
+									{% csrf_token %}
+									<input type="hidden" name="user_pk" value="{{user.pk}}">
+									<a type="submit" href="{% url 'lista'%}">Carrito</a>
+								</form>
+								
 								
 								<i class="bi bi-cart2 icon"></i>
 							</a>
