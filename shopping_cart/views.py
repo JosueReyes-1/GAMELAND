@@ -1,21 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import  redirect, render
+from django.contrib import messages
+from requests import request
 
 from shopping_cart.models import Lista_Productos
 from indexapp.models import Producto
 
 
-
 # Create your views here.
 def view_products(request):
     user=request.user.id
-    productos=Lista_Productos.objects.filter(user_id=user)
+    productos=Lista_Productos.objects.filter(user_id=user,estado_id=1)
     countP=productos.count()
     total=0
-
+  
     for precio in productos:
-        total=total+precio.producto.precio
-
+        total=(total+precio.producto.precio)*precio.cantidad
+        
 
     context={
         "listaproductos":productos,
@@ -31,27 +32,31 @@ def add_cart(request):
         user_pk=request.user.id
         estado_pk=1
         cantidad=1
-        producto=Lista_Productos.objects.filter(producto_id=product_pk)
+        producto=Lista_Productos.objects.filter(producto_id=product_pk , user_id=user_pk) 
 
         print(producto)
         
         if user_pk is None:
             return render(request,'shopping_cart/carrito_compras.html')
         else:
+            if producto.exists():
+                for produ in producto:
+                    Lista_Productos.objects.filter(producto_id=product_pk).update(cantidad=produ.cantidad+1)
+                    messages.add_message(request=request,level=messages.SUCCESS, message="EL PRODUCTO SE AGREGO AL CARRITO")
+                    return redirect('detalles',produ.producto.slug)
+            else:
+                Lista_Productos(producto_id=product_pk,cantidad=cantidad,user_id=user_pk,estado_id=estado_pk).save()
+                messages.add_message(request=request,level=messages.SUCCESS, message="EL PRODUCTO SE AGREGO AL CARRITO")
             for produ in producto:
-                if producto.exists():
-                    
-                        Lista_Productos.objects.filter(producto_id=product_pk).update(cantidad=produ.cantidad+1)
-                        return redirect('detalles',produ.producto.slug)
-                else:
-                    Lista_Productos(producto_id=product_pk,cantidad=cantidad,user_id=user_pk,estado_id=estado_pk).save()
                 return redirect('detalles',produ.producto.slug)
         
         
 
-def delete_product(requets):
-    if requets.method=="POST":
-        product_pk=requets.POST.get('product_pk')
-        print(product_pk)
-        Lista_Productos.objects.get(producto_id=product_pk).delete()
+def delete_product(request):
+    if request.method=="POST":
+        product_pk=request.POST.get('product_pk')
+        user_pk=request.user.id
+        Lista_Productos.objects.get(producto_id=product_pk,user_id=user_pk).delete()
+        messages.add_message(request=request,level=messages.SUCCESS, message="EL PRODUCTO SE ELIMINO CORRECTAMENTE")
         return redirect('shopping_cart')
+        

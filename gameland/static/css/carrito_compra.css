@@ -1,4 +1,4 @@
-section{
+.h-custom{
     min-height:100vh ;
 }
 
@@ -14,9 +14,7 @@ section{
     color: var(--color-blanco);
 }
 
-@media (min-width: 1025px) {
-    
-}
+
     
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;

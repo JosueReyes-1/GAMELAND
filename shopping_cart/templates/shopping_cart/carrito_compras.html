@@ -7,13 +7,20 @@
 {% endblock %}
 
 {% block content %}
-<section class="h-custom" >
+
+<section class="h-custom mt-5" >
     <div class="container py-5 h-100">
+        {% if messages %}
+        <ul class="messages mt-5">
+            {% for message in messages %}
+                <li{% if message.tags %} class="aler alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12">
                 {% if user.is_active %}
-                    <div class="card card-registration card-registration-2"
-                        style="border-radius: 15px;">
+                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                         <div class="card-body p-0">
                             <div class="row g-0">
                                     <div class="col-lg-8">
@@ -25,32 +32,32 @@
                                             </div>
                                             <hr class="my-4">
                                             {% for productos in listaproductos %}
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="{{productos.producto.imagenes.last.imagen.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                                        <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>
-                                                        <h5 class="text-black mb-0 titulo3">{{productos.producto.nombre}}</h5>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 ">
-                                                        <h6 class="titulo3">Cantidad: 3</h6>
+                                                <a href="/productos/{{productos.producto.slug}}" class="text-decoration-none">
+                                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                                            <img src="{{productos.producto.imagenes.last.imagen.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                                            <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>
+                                                            <h5 class="text-black mb-0 titulo3">{{productos.producto.nombre}}</h5>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3 col-xl-2 ">
+                                                            <h6 class="titulo3">Cantidad: {{productos.cantidad}}</h6>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-2 col-xl-2 ">
+                                                            <h6 class=" titulo3">Precio: ${{productos.producto.precio}}</h6>
                                                         
-        
+                                                        </div>
+                                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                            <form action="{% url 'eliminar' %}" method="POST">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="product_pk" value="{{productos.producto.pk}}">
+                                                                <button type="submit" class="text-muted"><i class="bi bi-x"></i></button>
+                                                            </form>
+                                                            
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 ">
-                                                        <h6 class=" titulo3">Precio: ${{productos.producto.precio}}</h6>
-                                                    
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <form action="{% url 'eliminar' %}" method="POST">
-                                                            {% csrf_token %}
-                                                            <input type="hidden" name="product_pk" value="{{productos.producto.pk}}">
-                                                            <button type="submit" class="text-muted"><i class="bi bi-x"></i></button>
-                                                        </form>
-                                                        
-                                                    </div>
-                                                </div>
+                                                </a>
 
                                                 <hr class="my-4">
                                             {% endfor %}
@@ -70,9 +77,6 @@
                                                 <h5 class="titulo3">${{totalpagar}}</h5>
                                             </div>
 
-
-                                            
-
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between
@@ -90,7 +94,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <div>
+                    <div class="mt-5">
                         <h1 class="titulo3 display-3">Debes de iniciar sesion</h1>
                         <a href="{% url 'account_login' %}" class="text-decoration-none titulo3 fs-1">Iniciar sesion <i class="bi bi-arrow-right"></i></a>
                     </div>
