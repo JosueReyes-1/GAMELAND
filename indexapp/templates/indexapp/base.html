@@ -27,16 +27,16 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav m-auto">
 						<li class="nav-item pe-3 {% if request.path == '/' %}active{% endif %}">
-							<a class="nav-link active " href="/categorias/juguetes">Juguetes</a>
+							<a class="nav-link active hover" href="/categorias/juguetes">Juguetes</a>
 						</li>
 						<li class="nav-item pe-3">
-							<a class="nav-link  active " href="/categorias/coleccion">Coleccion</a>
+							<a class="nav-link  active hover" href="/categorias/coleccion">Coleccion</a>
 						</li>
 						<li class="nav-item pe-3">
-							<a class="nav-link  active " href="/categorias/mujer">Mujer</a>
+							<a class="nav-link  active hover" href="/categorias/mujer">Mujer</a>
 						</li>
 						<li class="nav-item pe-3">
-							<a class="nav-link  active " href="/categorias/rebajas">Rebajas</a>
+							<a class="nav-link  active hover" href="/categorias/rebajas">Rebajas</a>
 						</li>
 					</ul>
 					
@@ -63,15 +63,13 @@
 															
 				
 						</li>
-						
 						<li class="nav-item me-3 me-lg-0">
-							<span class="nav-link hover" href="#!">
-								<a href="{% url 'lista'%}">Carrito</a>
+							<a class="nav-link hover" href="{% url 'shopping_cart'%}" >
+								<span class="text-decoration-none">Carrito</span>
 								<i class="bi bi-cart2 icon"></i>
-							</span>
+							</a>	
 						</li>
 						<li class="nav-item me-3 me-lg-0">
-							
 							<a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link hover" href="#!">
 								<span>Buscar</span> 
 								<i class="bi bi-search icon"></i>

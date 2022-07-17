@@ -12,7 +12,12 @@ class Estado_ListaP(models.Model):
 class Lista_Productos(models.Model):
     producto=models.ForeignKey(Producto,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    cantidad=models.IntegerField(null=True)
     estado=models.ForeignKey(Estado_ListaP,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.producto.nombre
+
 
 # Create your models here.
 

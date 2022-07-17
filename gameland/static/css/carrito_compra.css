@@ -1,7 +1,21 @@
+section{
+    min-height:100vh ;
+}
+
+.btn-comprar{
+    padding: 10px;
+    background-color: var(--color-negro);
+    border-radius:8px;
+    color: var(--color-blanco);
+    transition: .3s;
+}
+.btn-comprar:hover{
+    background-color:var(--color-amarillo);
+    color: var(--color-blanco);
+}
+
 @media (min-width: 1025px) {
-    .h-custom {
-        height: 100vh !important;
-        }
+    
 }
     
 .card-registration .select-input.form-control[readonly]:not([disabled]) {

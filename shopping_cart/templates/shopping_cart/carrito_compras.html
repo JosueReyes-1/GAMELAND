@@ -7,84 +7,95 @@
 {% endblock %}
 
 {% block content %}
-<section class="h-100 h-custom" >
+<section class="h-custom" >
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12">
-                <div class="card card-registration card-registration-2"
-                    style="border-radius: 15px;">
-                    <div class="card-body p-0">
-                        <div class="row g-0">
-                            <div class="col-lg-8">
-                                <div class="p-5">
-                                    <div class="d-flex justify-content-between
-                                        align-items-center mb-5">
-                                        <h1 class="fw-bold mb-0 text-black titulo3 fs-1">Shopping Cart</h1>
-                                        <h6 class="mb-0 text-muted titul3 fs-4">{{countP}} items</h6>
-                                    </div>
-                                    <hr class="my-4">
-                                    {% for productos in listaproductos %}
-                                        <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                            <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <img src="{{productos.producto.imagenes.last.imagen.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                {% if user.is_active %}
+                    <div class="card card-registration card-registration-2"
+                        style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                    <div class="col-lg-8">
+                                        <div class="p-5">
+                                            <div class="d-flex justify-content-between
+                                                align-items-center mb-5">
+                                                <h1 class="fw-bold mb-0 text-black titulo3 fs-1">Shopping Cart</h1>
+                                                <h6 class="mb-0 text-muted titul3 fs-4">{{countP}} items</h6>
                                             </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                                <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>
-                                                <h5 class="text-black mb-0 titulo3">{{productos.producto.nombre}}</h5>
-                                            </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-2 ">
-                                                <h6 class="titulo3">Cantidad: 3</h6>
-                                                
-  
-                                            </div>
-                                            <div class="col-md-3 col-lg-2 col-xl-2 ">
-                                                <h6 class=" titulo3">Precio: ${{productos.producto.precio}}</h6>
-                                               
-                                            </div>
-                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#!" class="text-muted"><i class="bi bi-x"></i></a>
+                                            <hr class="my-4">
+                                            {% for productos in listaproductos %}
+                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <img src="{{productos.producto.imagenes.last.imagen.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                        <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>
+                                                        <h5 class="text-black mb-0 titulo3">{{productos.producto.nombre}}</h5>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-2 ">
+                                                        <h6 class="titulo3">Cantidad: 3</h6>
+                                                        
+        
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-2 col-xl-2 ">
+                                                        <h6 class=" titulo3">Precio: ${{productos.producto.precio}}</h6>
+                                                    
+                                                    </div>
+                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                        <form action="{% url 'eliminar' %}" method="POST">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="product_pk" value="{{productos.producto.pk}}">
+                                                            <button type="submit" class="text-muted"><i class="bi bi-x"></i></button>
+                                                        </form>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <hr class="my-4">
+                                            {% endfor %}
+                                            <div class="pt-5">
+                                                <h6 class="mb-0 titulo3"><a href="{% url 'index' %}" class="text-body"><i class="bi bi-arrow-left"></i> Volver a la tienda</a></h6>
                                             </div>
                                         </div>
-
-                                        <hr class="my-4">
-                                    {% endfor %}
-                                    
-
-                                    
-
-                                    <div class="pt-5">
-                                        <h6 class="mb-0 titulo3"><a href="{% url 'index' %}" class="text-body"><i class="bi bi-arrow-left"></i> Volver a la tienda</a></h6>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 bg-grey">
-                                <div class="p-5">
-                                    <h3 class="fw-bold mb-5 mt-2 pt-1 titulo3">Summary</h3>
-                                    <hr class="my-4">
+                                    <div class="col-lg-4 bg-grey">
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1 titulo3">Summary</h3>
+                                            <hr class="my-4">
 
-                                    <div class="d-flex justify-content-between
-                                        mb-4">
-                                        <h5 class="text-uppercase titulo3">items {{countP}}</h5>
-                                        <h5 class="titulo3">${{totalpagar}}</h5>
+                                            <div class="d-flex justify-content-between
+                                                mb-4">
+                                                <h5 class="text-uppercase titulo3">items {{countP}}</h5>
+                                                <h5 class="titulo3">${{totalpagar}}</h5>
+                                            </div>
+
+
+                                            
+
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between
+                                                mb-5">
+                                                <h5 class="text-uppercase titulo3">Total price</h5>
+                                                <h5 class="titulo3">${{totalpagar}}</h5>
+                                            </div>
+
+                                            <a href="#" class="text-decoration-none titulo3 fs-4 btn-comprar">
+                                                Comprar Ahora
+                                            </a>
+                                        </div>
                                     </div>
-
-
-                                    
-
-                                    <hr class="my-4">
-
-                                    <div class="d-flex justify-content-between
-                                        mb-5">
-                                        <h5 class="text-uppercase titulo3">Total price</h5>
-                                        <h5 class="titulo3">${{totalpagar}}</h5>
-                                    </div>
-
-                                    <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Register</button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% else %}
+                    <div>
+                        <h1 class="titulo3 display-3">Debes de iniciar sesion</h1>
+                        <a href="{% url 'account_login' %}" class="text-decoration-none titulo3 fs-1">Iniciar sesion <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                {% endif %}
+                
             </div>
         </div>
     </div>
