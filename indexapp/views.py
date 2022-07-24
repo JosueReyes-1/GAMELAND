@@ -9,10 +9,10 @@ from django.contrib.auth.models import User
 
 def index(request):
     # consulta de productos nuevos
-    productos_nuevos=Producto.objects.filter(estado__estado='nuevo')
+    productos_nuevos=Producto.objects.filter(estado__estado='nuevo',stock__gte=1)
     imagenesP=ImagenProducto.objects.all()
     # consulta de productos en descuentos
-    productos_desc=Producto.objects.filter(estado__estado='descuento')
+    productos_desc=Producto.objects.filter(estado__estado='descuento',stock__gte=1)
 
     context={
         "nuevos": productos_nuevos,
@@ -23,7 +23,7 @@ def index(request):
 
 
 def detalles(request, slug_text):
-    productos=Producto.objects.filter(slug=slug_text)
+    productos=Producto.objects.filter(slug=slug_text,stock__gte=1)
     imagenesP=ImagenProducto.objects.filter(producto__slug=slug_text) 
     if productos.exists() and imagenesP.exists():
         productos=productos.first()
