@@ -210,3 +210,5 @@ EXCHANGE_TOKEN = True
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+

@@ -40,18 +40,6 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
-class Size(models.Model):
-    talla=models.CharField(max_length=30)
-    detalles=models.CharField(max_length=30, null=True, blank=True)
-    def __str__(self):
-        return self.talla
-
-
-class Producto_Size(models.Model):
-    producto=models.ForeignKey(Producto,on_delete=models.CASCADE)
-    talla=models.ManyToManyField(Size)
-
-
 # slug
 def slug_generator(sender,instance, *args,**kwargs):
     if not instance.slug:

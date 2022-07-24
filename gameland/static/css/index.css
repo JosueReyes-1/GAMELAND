@@ -16,21 +16,7 @@
     position: relative;
     z-index: 1;
 }
-.text-banner::before{
-    width: 70%;
-    margin: auto;
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    right: 0px;
-    left: 0%;
-    content: "";
-    display: inline-block;
-    background-color:var(--color-blanco);
-    z-index: -1;
-    filter: blur(6px);
-    will-change: transform;
-}
+
 .icon-banner{
     color: var(--color-gris);
 }

@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static "css/carrito_compra.css" %}">
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=MXN"></script>
 {% endblock %}
 
 {% block content %}
@@ -31,6 +32,7 @@
                                                 <h6 class="mb-0 text-muted titul3 fs-4">{{countP}} items</h6>
                                             </div>
                                             <hr class="my-4">
+                                            
                                             {% for productos in listaproductos %}
                                                 <a href="/productos/{{productos.producto.slug}}" class="text-decoration-none">
                                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -38,7 +40,7 @@
                                                             <img src="{{productos.producto.imagenes.last.imagen.url}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
                                                         </div>
                                                         <div class="col-md-3 col-lg-3 col-xl-3">
-                                                            <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>
+                                                            <h6 class="text-muted titulo3 ">{{productos.producto.marca}}</h6>                                                            
                                                             <h5 class="text-black mb-0 titulo3">{{productos.producto.nombre}}</h5>
                                                         </div>
                                                         <div class="col-md-3 col-lg-3 col-xl-2 ">
@@ -85,9 +87,7 @@
                                                 <h5 class="titulo3">${{totalpagar}}</h5>
                                             </div>
 
-                                            <a href="#" class="text-decoration-none titulo3 fs-4 btn-comprar">
-                                                Comprar Ahora
-                                            </a>
+                                            <div id="paypal-button-container" class="mt-5"></div>
                                         </div>
                                     </div>
                             </div>
@@ -107,5 +107,81 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
 
+    var  total = '{{totalpagar}}'
+    var productId='{{user1}}'
+
+    function completeOrder(){
+        var url ="{% url 'complete' %}"
+
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({productId})
+        })
+
+    }
+
+    paypal.Buttons({
+
+        // Sets up the transaction when a payment button is clicked
+
+        createOrder: (data, actions) => {
+
+            return actions.order.create({
+
+                purchase_units: [{
+
+                    amount: {
+
+                        value: total 
+                    }
+
+                }]
+
+            });
+
+        },
+
+        // Finalize the transaction after payer approval
+
+        onApprove: (data, actions) => {
+
+            return actions.order.capture().then(function (orderData) {
+
+                completeOrder();
+
+                const transaction = orderData.purchase_units[0].payments.captures[0];
+
+                alert(`Transaction ${transaction.status}\n\nSee console for all available details`);
+
+               
+
+            });
+
+        }
+
+    }).render('#paypal-button-container');
+
+</script>
 {% endblock %}
