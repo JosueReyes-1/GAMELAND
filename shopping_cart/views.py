@@ -67,5 +67,14 @@ def delete_product(request):
 
 def payment_complete(request):
     user=request.user.id
-    Lista_Productos.objects.filter(user_id=user,estado_id=1).update(estado_id=2)
+    lista=Lista_Productos.objects.filter(user_id=user,estado_id=1)
+
+    for producto in lista:
+        cantidad=producto.cantidad
+        stock=producto.producto.stock
+        Producto.objects.filter(id=producto.producto.id).update(stock=stock-cantidad)
+        
+
+    lista.update(estado_id=2)
+    
     return redirect('shopping_cart')
