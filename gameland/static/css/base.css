@@ -115,30 +115,3 @@ footer{
     background-color: var(--color-negro);
 }
 
-
-/* modal */
-.modal-fullscreen{
-    height: auto;
-}
-
-.input-group-text{
-    background: none;
-}
-.modal-header{
-    height: 20vh;
-    justify-content: center;
-}
-.search{
-    width: 50%;
-}
-.modal-body{
-    padding: 0;
-}
-
-.barra-search:focus{
-    border-color: var(--color-amarillo);
-}
-.btn-modal:focus{
-    border-color: var(--color-negro);
-    box-shadow: none;
-}

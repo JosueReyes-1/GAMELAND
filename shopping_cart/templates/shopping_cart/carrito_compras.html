@@ -31,6 +31,71 @@
                                                 <h1 class="fw-bold mb-0 text-black titulo3 fs-1">Shopping Cart</h1>
                                                 <h6 class="mb-0 text-muted titul3 fs-4">{{countP}} items</h6>
                                             </div>
+
+                                            <div>
+                                                <h1 class="h5">Direccion de envio</h1>
+                                               
+                                                {% for direccion in direccionesP %} 
+                                                    <div class="d-flex justify-content-around flex-column p-0">
+                                                        <p>{{direccion.nombre}}<br>
+                                                            {{direccion.domicilio}} <br>
+                                                            {{direccion.cp}} <br>
+                                                            {{direccion.ciudad}}, {{direccion.pais}} <br>
+                                                        </p>
+                                                    </div>
+                                                {% endfor %}
+                                                <div class="d-flex ">
+                                                    <a href="{% url 'direciones'%}" class="titulo3">Crear Direciones</a>
+                                                    <button type="button" class=" mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        cambiar direccion
+                                                    </button>
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                          <div class="modal-content">
+                                                            
+                                                            <div class="modal-body">
+                                                              {% for direccion in direcciones %}
+                                                                <div class="card-group">
+                                                                    <div class="card">
+                                                                        <div>
+                                                                            {% if direccion.estado is True %}
+                                                                                <p class="titulo2">Seleccionada</p>
+                                                                            {% endif %}
+                                                                            <p>{{direccion.nombre}}<br>
+                                                                                {{direccion.domicilio}} <br>
+                                                                                {{direccion.cp}} <br>
+                                                                                {{direccion.ciudad}}, {{direccion.pais}} <br>
+                                                                            </p>
+                                                                            <div class="d-flex">
+                                                                                <form action="{% url 'delete_direction' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                    <input type="hidden" name="direccion_id" value="{{direccion.id}}">
+                                                                                    <input type="submit" class="mx-3" value="Eliminar">
+                                                                                </form>
+                                                                                <form action="{% url 'change_direction' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                    <input type="hidden" name="direccion_id" value="{{direccion.id}}">
+                                                                                    <input type="submit" class="mx-3" value="Enviar Aqui">
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                              {% endfor %}
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      
+                                                      
+                                                </div>
+                                            </div>
+                                            
                                             <hr class="my-4">
                                             
                                             {% for productos in listaproductos %}

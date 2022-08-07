@@ -4,7 +4,7 @@ from django.shortcuts import  redirect, render
 from django.contrib import messages
 from requests import request
 
-from shopping_cart.models import Lista_Productos
+from shopping_cart.models import Direccion, Lista_Productos
 from indexapp.models import Producto
 
 
@@ -17,12 +17,15 @@ def view_products(request):
     total=0
     
 
-    
+    direccionPrincipal=Direccion.objects.filter(user_id=user,estado=True)
+    direciones=Direccion.objects.filter(user_id=user)
     for precio in productos:
         total=(total+precio.producto.precio)*precio.cantidad
         
 
     context={
+        "direcciones":direciones,
+        "direccionesP":direccionPrincipal,
         "listaproductos":productos,
         "totalpagar":total,
         "user1":user,
@@ -77,4 +80,50 @@ def payment_complete(request):
 
     lista.update(estado_id=2)
     
+    return redirect('shopping_cart')
+
+
+def create_direction(request):
+    if request.method=='POST':
+        user=request.user.id
+        name=request.POST.get('txtname')
+        pais=request.POST.get('txtpais')
+        ciudad=request.POST.get('txtciudad')
+        direccion=request.POST.get('txtdireccion')
+        cp=request.POST.get('txtcp')
+        num_ext=request.POST.get('txtnum_ex')
+        tel=request.POST.get('txttel')
+        instrucciones=request.POST.get('txtinstrucciones')
+        Direccion.objects.filter(user_id=user,estado=True).update(estado=False)
+        Direccion(user_id=user,pais=pais,ciudad=ciudad,nombre=name,num_exterior=num_ext,domicilio=direccion,cp=cp,instrucciones=instrucciones,num_tel=tel,estado=True).save()
+
+
+    
+   
+    context={
+        
+    }
+    return render(request,'shopping_cart/form_direcciones.html',context)
+
+
+def delete_direction(request):
+    if request.method=='POST':
+        user=request.user.id
+        direccion_id=request.POST.get('direccion_id')
+        direccionv=Direccion.objects.get(user_id=user,pk=direccion_id)
+
+        if direccionv.estado==True:
+            print('hola')
+        else:
+            Direccion.objects.get(pk=direccion_id,user_id=user).delete()
+
+    return redirect('shopping_cart')
+
+def change_direction(request):
+    user=request.user.id
+    direccion_id=request.POST.get('direccion_id')
+
+    Direccion.objects.filter(user_id=user).update(estado=False)
+    
+    Direccion.objects.filter(user_id=user,pk=direccion_id).update(estado=True)
     return redirect('shopping_cart')

@@ -1,5 +1,8 @@
 
 
+from re import T
+from statistics import mode
+from xmlrpc.client import boolean
 from django.db import models
 import indexapp
 from indexapp.models import Producto
@@ -15,14 +18,12 @@ class Direccion(models.Model):
     nombre=models.CharField(max_length=30)
     num_exterior=models.CharField(max_length=20)
     num_tel=models.IntegerField()
-    domicio=models.CharField(max_length=255)
+    domicilio=models.CharField(max_length=255)
     cp=models.IntegerField()
-    intrucciones=models.CharField(max_length=300)
+    instrucciones=models.CharField(max_length=300)
+    estado=models.BooleanField(null=True)
     
-class Ticket(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    direccion=models.ForeignKey(Direccion,on_delete=models.PROTECT)
-    # fecha=models.DateField()
+
 
 class Lista_Productos(models.Model):
     producto=models.ForeignKey(Producto,on_delete=models.CASCADE)
@@ -34,7 +35,11 @@ class Lista_Productos(models.Model):
         return self.producto.nombre
 
 
-
+# class Ticket(models.Model):
+#     user=models.ForeignKey(User,on_delete=models.CASCADE)
+#     direccion=models.ForeignKey(Direccion,on_delete=models.PROTECT)
+#     productos=models.ForeignKey(Lista_Productos,on_delete=models.PROTECT)
+#     # fecha=models.DateField()
 
 
 # Create your models here.

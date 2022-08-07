@@ -1,0 +1,55 @@
+{% extends "indexapp/base.html" %}
+
+{% load static %}
+
+{% block head %}
+   <link rel="stylesheet" href="{% static 'css/form_direcciones.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="mt-5  m-auto">
+        <div class="container contact-form">
+            <form action="{% url 'direciones' %}" method="post">
+                {% csrf_token %}
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <input type="text" name="txtname" class="form-control" placeholder="Nombre" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txtpais" class="form-control" placeholder="Pais" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txtciudad" class="form-control" placeholder="Ciudad" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txtdireccion" class="form-control" placeholder="Direccion" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txtcp" class="form-control" placeholder="cp" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txtnum_ex" class="form-control" placeholder="Numero Exterior" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" name="txttel" class="form-control" placeholder="Telefono" value="" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" name="btnSubmit" class="btnContactSubmit" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtinstrucciones" class="form-control" placeholder="Instrucciones adicioneles" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+</div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
