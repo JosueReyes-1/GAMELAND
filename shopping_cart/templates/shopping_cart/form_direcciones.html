@@ -9,31 +9,32 @@
 
 {% block content %}
     <div class="mt-5  m-auto">
-        <div class="container contact-form">
-            <form action="{% url 'direciones' %}" method="post">
+        <div class="container">
+            <h1 class="text-center pt-5">Nueva Direccion</h1>
+            <form class="w-75 m-auto my-5" action="{% url 'direciones' %}" method="post">
                 {% csrf_token %}
                <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group ">
-                            <input type="text" name="txtname" class="form-control" placeholder="Nombre" value="" />
+                        <div class="form-group">
+                            <input type="text" name="txtname" class="form-control" placeholder="Nombre" value="" required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txtpais" class="form-control" placeholder="Pais" value="" />
+                            <input type="text" name="txtpais" class="form-control" placeholder="Pais" value="" required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txtciudad" class="form-control" placeholder="Ciudad" value="" />
+                            <input type="text" name="txtciudad" class="form-control" placeholder="Ciudad" value="" required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txtdireccion" class="form-control" placeholder="Direccion" value="" />
+                            <input type="text" name="txtdireccion" class="form-control" placeholder="Direccion" value=""required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txtcp" class="form-control" placeholder="cp" value="" />
+                            <input type="number" name="txtcp" class="form-control" placeholder="cp" value="" required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txtnum_ex" class="form-control" placeholder="Numero Exterior" value="" />
+                            <input type="number" name="txtnum_ex" class="form-control" placeholder="Numero Exterior" value="" required/>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" name="txttel" class="form-control" placeholder="Telefono" value="" />
+                            <input type="number" name="txttel" class="form-control" placeholder="Telefono" value="" required/>
                         </div>
                         <div class="form-group mt-3">
                             <input type="submit" name="btnSubmit" class="btnContactSubmit" value="Send Message" />

@@ -2,16 +2,15 @@
     min-height:100vh ;
 }
 
-.btn-comprar{
-    padding: 10px;
-    background-color: var(--color-negro);
-    border-radius:8px;
-    color: var(--color-blanco);
-    transition: .3s;
+.btn-simple{
+    background-color: transparent;
+    border: 0;
+    
 }
-.btn-comprar:hover{
-    background-color:var(--color-amarillo);
-    color: var(--color-blanco);
+.btn-link{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px;
 }
 
 
@@ -28,7 +27,8 @@
 }
     
 .bg-grey {
-    background-color: #eae8e8;
+    
+    background-color: var(--color-azul);
 }
     
 @media (min-width: 992px) {

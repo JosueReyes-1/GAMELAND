@@ -30,16 +30,16 @@ class Lista_Productos(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     cantidad=models.IntegerField(null=True)
     estado=models.ForeignKey(Estado_ListaP,on_delete=models.CASCADE)
-    # ticket=models.ForeignKey(Ticket,on_delete=models.CASCADE,null=True)
+
     def __str__(self):
         return self.producto.nombre
 
 
-# class Ticket(models.Model):
-#     user=models.ForeignKey(User,on_delete=models.CASCADE)
-#     direccion=models.ForeignKey(Direccion,on_delete=models.PROTECT)
-#     productos=models.ForeignKey(Lista_Productos,on_delete=models.PROTECT)
-#     # fecha=models.DateField()
+class Ticket(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    direccion=models.ForeignKey(Direccion,on_delete=models.PROTECT)
+    productos=models.ForeignKey(Lista_Productos,on_delete=models.PROTECT)
+    # fecha=models.DateField()
 
 
 # Create your models here.

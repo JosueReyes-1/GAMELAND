@@ -4,7 +4,7 @@ from django.shortcuts import  redirect, render
 from django.contrib import messages
 from requests import request
 
-from shopping_cart.models import Direccion, Lista_Productos
+from shopping_cart.models import Direccion, Lista_Productos, Ticket
 from indexapp.models import Producto
 
 
@@ -70,6 +70,7 @@ def delete_product(request):
 
 def payment_complete(request):
     user=request.user.id
+    direccion_id=Direccion.objects.get(user_id=user,estado=True)
     lista=Lista_Productos.objects.filter(user_id=user,estado_id=1)
 
     for producto in lista:
@@ -77,7 +78,7 @@ def payment_complete(request):
         stock=producto.producto.stock
         Producto.objects.filter(id=producto.producto.id).update(stock=stock-cantidad)
         
-
+    print(lista)
     lista.update(estado_id=2)
     
     return redirect('shopping_cart')

@@ -46,8 +46,8 @@
                                                 {% endfor %}
                                                 <div class="d-flex ">
                                                     <a href="{% url 'direciones'%}" class="titulo3">Crear Direciones</a>
-                                                    <button type="button" class=" mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        cambiar direccion
+                                                    <button type="button" class=" mx-3 titulo3 btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        Cambiar Direccion
                                                     </button>
                                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -56,8 +56,8 @@
                                                             <div class="modal-body">
                                                               {% for direccion in direcciones %}
                                                                 <div class="card-group">
-                                                                    <div class="card">
-                                                                        <div>
+                                                                    <div class="card border-0">
+                                                                        <div class="mx-2">
                                                                             {% if direccion.estado is True %}
                                                                                 <p class="titulo2">Seleccionada</p>
                                                                             {% endif %}
@@ -67,21 +67,23 @@
                                                                                 {{direccion.ciudad}}, {{direccion.pais}} <br>
                                                                             </p>
                                                                             <div class="d-flex">
+                                                                                <form  action="{% url 'change_direction' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                    <input type="hidden" name="direccion_id" value="{{direccion.id}}">
+                                                                                    <input type="submit" class=" btn-simple titulo3" value="Enviar Aqui->">
+                                                                                </form>
                                                                                 <form action="{% url 'delete_direction' %}" method="POST">
                                                                                     {% csrf_token %}
                                                                                     <input type="hidden" name="direccion_id" value="{{direccion.id}}">
-                                                                                    <input type="submit" class="mx-3" value="Eliminar">
+                                                                                    <input type="submit" class="mx-3 btn-simple titulo3" value="Eliminar">
                                                                                 </form>
-                                                                                <form action="{% url 'change_direction' %}" method="POST">
-                                                                                    {% csrf_token %}
-                                                                                    <input type="hidden" name="direccion_id" value="{{direccion.id}}">
-                                                                                    <input type="submit" class="mx-3" value="Enviar Aqui">
-                                                                                </form>
+                                                                               
                                                                             </div>
                                                                         </div>
-                                                                        
                                                                     </div>
+                                                                    
                                                                 </div>
+                                                                <hr class="my-4">
                                                               {% endfor %}
                                                             </div>
                                                             <div class="modal-footer">
@@ -119,7 +121,7 @@
                                                             <form action="{% url 'eliminar' %}" method="POST">
                                                                 {% csrf_token %}
                                                                 <input type="hidden" name="product_pk" value="{{productos.producto.pk}}">
-                                                                <button type="submit" class="text-muted"><i class="bi bi-x"></i></button>
+                                                                <button type="submit" class="text-muted btn-simple"><i class="bi bi-x titulo1"></i></button>
                                                             </form>
                                                             
                                                         </div>
@@ -135,21 +137,21 @@
                                     </div>
                                     <div class="col-lg-4 bg-grey">
                                         <div class="p-5">
-                                            <h3 class="fw-bold mb-5 mt-2 pt-1 titulo3">Summary</h3>
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1 titulo3-blanco">Summary</h3>
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between
                                                 mb-4">
-                                                <h5 class="text-uppercase titulo3">items {{countP}}</h5>
-                                                <h5 class="titulo3">${{totalpagar}}</h5>
+                                                <h5 class="text-uppercase titulo3-blanco">items {{countP}}</h5>
+                                                <h5 class="titulo3-blanco">${{totalpagar}}</h5>
                                             </div>
 
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between
                                                 mb-5">
-                                                <h5 class="text-uppercase titulo3">Total price</h5>
-                                                <h5 class="titulo3">${{totalpagar}}</h5>
+                                                <h5 class="text-uppercase titulo3-blanco">Total price</h5>
+                                                <h5 class="titulo3-blanco">${{totalpagar}}</h5>
                                             </div>
 
                                             <div id="paypal-button-container" class="mt-5"></div>
