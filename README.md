@@ -1,4 +1,4 @@
-<h1>GAMELAND</h1>
+<h1>GAMELAND 👨‍💻</h1>
 
 <p>GAMELAND is an ecommerce of geek things, developed with the goal of practicing.
 
